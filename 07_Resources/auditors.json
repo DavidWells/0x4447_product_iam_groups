@@ -1,0 +1,24 @@
+{
+	"IAMGroupAuditors": {
+		"Type": "AWS::IAM::Group",
+        "Description": "Mostly read only access to specific parts of the site.",
+		"Properties": {
+			"GroupName": "Auditors",
+			"Policies": [
+				{
+					"PolicyName": "default",
+					"PolicyDocument": {
+						"Version": "2012-10-17",
+						"Statement": [
+							{
+								"Effect": "Allow",
+								"Action": "*",
+								"Resource": "*"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

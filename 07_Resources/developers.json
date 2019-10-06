@@ -1,0 +1,28 @@
+{
+	"IAMGroupDevelopers": {
+		"Type": "AWS::IAM::Group",
+        "Description": "Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.",
+		"Properties": {
+			"GroupName": "Developers",
+			"Policies": [
+				{
+					"PolicyName": "default",
+					"PolicyDocument": {
+						"Version": "2012-10-17",
+						"Statement": [
+							{
+								"Effect": "Allow",
+								"Action": [
+                                    "CodeBuild:*",
+                                    "CodePipeline:*",
+                                    "CodeCommit:*"
+                                ],
+								"Resource": "*"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

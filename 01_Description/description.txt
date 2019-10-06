@@ -1,0 +1,1 @@
+This is collection of IAM Groups that anyone should use for every AWS account.

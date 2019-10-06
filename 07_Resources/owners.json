@@ -1,0 +1,24 @@
+{
+	"IAMGroupOwners": {
+		"Type": "AWS::IAM::Group",
+        "Description": "Owners are like Admin, but just own the company.",
+		"Properties": {
+			"GroupName": "Owners",
+			"Policies": [
+				{
+					"PolicyName": "default",
+					"PolicyDocument": {
+						"Version": "2012-10-17",
+						"Statement": [
+							{
+								"Effect": "Allow",
+								"Action": "*",
+								"Resource": "*"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

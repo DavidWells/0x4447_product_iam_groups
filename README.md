@@ -1,6 +1,31 @@
-# 🥳 Placeholder
+# 👨‍👩‍👧‍👦 IAM Groups
 
-Description.
+This stack is here to help you be more organize with your AWS accounts. Over the years we came up with a nice list of IAM Groups that every AWS should have to make sure all the users are organized and to make sure it is clear at a glance which user is responsible for what part of AWS.
+
+Before you use this CloudFormation file, make sure to review it to see if the policy that each group is something that will work for you.
+
+# DISCLAIMER!
+
+This stack is available to anyone at no cost, but on an as-is basis. 0x4447, LLC is not responsible for damages or costs of any kind that may occur when you use the stack. You take full responsibility when you use it.
+
+# Deploy
+
+### CloudFormation
+
+<a target="_blank" href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=zer0x4447-IAM-Groups&templateURL=https://s3.amazonaws.com/0x4447-drive-cloudformation/iam_groups.json">
+<img align="left" style="float: left; margin: 0 10px 0 0;" src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a>
+
+To deploy this stack, all you need to do is click the button to the left and follow the instructions that CloudFormation provides in your AWS Dashboard. Alternatively, you can download the CF file from [here](https://s3.amazonaws.com/0x4447-drive-cloudformation/iam_groups.json).
+
+#### What Will Deploy?
+
+The stack takes advantage of just IAM Groups.
+
+- 5x IAM Groups
+
+# Pricing
+
+IAM Groups doesn't cost anything.
 
 # The End
 

@@ -1,0 +1,142 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "This is collection of IAM Groups that anyone should use for every AWS account.",
+	"Resources": {
+		"IAMGroupAccountants": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Accountants will have access only to the billing section of AWS.",
+			"Properties": {
+				"GroupName": "Accountants",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": "*",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"IAMGroupAdmins": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Full access to the whole AWS account.",
+			"Properties": {
+				"GroupName": "Admins",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": "*",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"IAMGroupDevelopers": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.",
+			"Properties": {
+				"GroupName": "Developers",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": [
+										"CodeBuild:*",
+										"CodePipeline:*",
+										"CodeCommit:*"
+									],
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"IAMGroupAuditors": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Mostly read only access to specific parts of the site.",
+			"Properties": {
+				"GroupName": "Auditors",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": "*",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"IAMGroupOwners": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Owners are like Admin, but just own the company.",
+			"Properties": {
+				"GroupName": "Owners",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": "*",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"IAMGroupViewers": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Read only mode for the full account, useful for AWS account review by 3th party contractors.",
+			"Properties": {
+				"GroupName": "Viewers",
+				"Policies": [
+					{
+						"PolicyName": "default",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
+								{
+									"Effect": "Allow",
+									"Action": "*",
+									"Resource": "*"
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

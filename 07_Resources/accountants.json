@@ -1,0 +1,24 @@
+{
+	"IAMGroupAccountants": {
+		"Type": "AWS::IAM::Group",
+        "Description": "Accountants will have access only to the billing section of AWS.",
+		"Properties": {
+			"GroupName": "Accountants",
+			"Policies": [
+				{
+					"PolicyName": "default",
+					"PolicyDocument": {
+						"Version": "2012-10-17",
+						"Statement": [
+							{
+								"Effect": "Allow",
+								"Action": "*",
+								"Resource": "*"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}
