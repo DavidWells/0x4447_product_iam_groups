@@ -1,0 +1,37 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+#
+#   top-most EditorConfig file
+#
+root = true
+
+#
+#   Default Settings.
+#
+[*]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+#
+#   Custom files.
+#
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+#
+#   Makefile Setting
+#
+[Makefile]
+indent_style = tab
+
+#
+#   Python Setting
+#
+[*.py]
+indent_style = space
+indent_size = 4
