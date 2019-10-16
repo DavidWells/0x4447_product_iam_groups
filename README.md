@@ -1,8 +1,8 @@
 # 👨‍👩‍👧‍👦 IAM Groups
 
-This stack is here to help you be more organize with your AWS accounts. Over the years we came up with a nice list of IAM Groups that every AWS should have to make sure all the users are organized and to make sure it is clear at a glance which user is responsible for what part of AWS.
+This stack is here to help you be more organize with your AWS accounts. Over the years we came up with a nice list of IAM Groups that every AWS should have. The groups will make sure it is clear at a glance which user is responsible for what part of AWS.
 
-Before you use this CloudFormation file, make sure to review it to see if the policy that each group is something that will work for you.
+Before you use this CloudFormation file, make sure to review it to see if the policy that each group has is something that will work for you.
 
 # DISCLAIMER!
 
@@ -22,6 +22,13 @@ To deploy this stack, all you need to do is click the button to the left and fol
 The stack takes advantage of just IAM Groups.
 
 - 5x IAM Groups
+    - **accountants**: Accountants will have access only to the billing section of AWS.
+    - **admins**: Full access to the whole AWS account.
+    - **auditors**: Read only access to specific parts of the site.
+    - **developers**: Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.
+    - **owners**: Owners are like Admins, but just own the company.
+    - **power_users**: All the privilege of an Admin, minus the ability to to manage users. Meaning no access to IAM, etc.
+    - **support**: Mostly read only access to the AWS account to help them debug issues.
 
 # Pricing
 
