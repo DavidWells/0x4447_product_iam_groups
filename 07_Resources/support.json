@@ -1,7 +1,7 @@
 {
     "IAMGroupSupport": {
         "Type": "AWS::IAM::Group",
-        "Description": "Mostly read only access to the AWS account.",
+        "Description": "Mostly read only access to the AWS account to help them debug issues.",
         "Properties": {
             "GroupName": "Support",
             "ManagedPolicyArns": [
