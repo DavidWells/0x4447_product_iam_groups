@@ -1,7 +1,7 @@
 {
 	"IAMGroupOwners": {
 		"Type": "AWS::IAM::Group",
-        "Description": "Owners are like Admin, but just own the company.",
+        "Description": "Owners are like Admins, but just own the company.",
 		"Properties": {
 			"GroupName": "Owners",
 			"Policies": [

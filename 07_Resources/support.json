@@ -1,0 +1,12 @@
+{
+    "IAMGroupSupport": {
+        "Type": "AWS::IAM::Group",
+        "Description": "Mostly read only access to the AWS account.",
+        "Properties": {
+            "GroupName": "Support",
+            "ManagedPolicyArns": [
+                "arn:aws:iam::aws:policy/job-function/SupportUser"
+            ]
+        }
+    }
+}

@@ -8,19 +8,148 @@
 				{
 					"PolicyName": "default",
 					"PolicyDocument": {
-						"Version": "2012-10-17",
-						"Statement": [
-							{
-								"Effect": "Allow",
-								"Action": [
-                                    "CodeBuild:*",
-                                    "CodePipeline:*",
-                                    "CodeCommit:*"
-                                ],
-								"Resource": "*"
-							}
-						]
-					}
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Version": "2012-10-17",
+                                "Statement": [
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codebuild:BatchGetProjects",
+                                            "codebuild:ListBuildsForProject",
+                                            "codebuild:BatchGetBuilds"
+                                        ],
+                                        "Resource": "arn:aws:codebuild:*:*:project/*"
+                                    },
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codebuild:ListBuilds",
+                                            "codebuild:ListCuratedEnvironmentImages",
+                                            "codebuild:ListSourceCredentials",
+                                            "codebuild:ListProjects",
+                                            "codebuild:ListRepositories",
+                                            "codebuild:ListConnectedOAuthAccounts"
+                                        ],
+                                        "Resource": "*"
+                                    }
+                                ]
+                            },
+                            {
+                                "Version": "2012-10-17",
+                                "Statement": [
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": "codepipeline:RetryStageExecution",
+                                        "Resource": "arn:aws:codepipeline:*:*:*/*"
+                                    },
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codepipeline:ListPipelineExecutions",
+                                            "codepipeline:StartPipelineExecution",
+                                            "codepipeline:ListActionExecutions",
+                                            "codepipeline:ListPipelines",
+                                            "codepipeline:GetPipeline",
+                                            "codepipeline:ListTagsForResource",
+                                            "codepipeline:GetPipelineState",
+                                            "codepipeline:GetPipelineExecution"
+                                        ],
+                                        "Resource": "arn:aws:codepipeline:*:*:*"
+                                    },
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codepipeline:ListWebhooks",
+                                            "codepipeline:ListTagsForResource",
+                                            "codepipeline:ListActionTypes"
+                                        ],
+                                        "Resource": [
+                                            "arn:aws:codepipeline:*:*:webhook:*",
+                                            "arn:aws:codepipeline:*:*:actiontype:*/*/*/*"
+                                        ]
+                                    },
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codepipeline:GetThirdPartyJobDetails",
+                                            "codepipeline:GetJobDetails"
+                                        ],
+                                        "Resource": "*"
+                                    }
+                                ]
+                            },
+                            {
+                                "Version": "2012-10-17",
+                                "Statement": [
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": [
+                                            "codecommit:CreateBranch",
+                                            "codecommit:ListPullRequests",
+                                            "codecommit:PutFile",
+                                            "codecommit:CreateCommit",
+                                            "codecommit:ListTagsForResource",
+                                            "codecommit:BatchDescribeMergeConflicts",
+                                            "codecommit:GetCommentsForComparedCommit",
+                                            "codecommit:GetComment",
+                                            "codecommit:UpdateComment",
+                                            "codecommit:MergePullRequestByThreeWay",
+                                            "codecommit:CreatePullRequest",
+                                            "codecommit:PostCommentForPullRequest",
+                                            "codecommit:GetRepositoryTriggers",
+                                            "codecommit:UpdatePullRequestDescription",
+                                            "codecommit:GetObjectIdentifier",
+                                            "codecommit:BatchGetPullRequests",
+                                            "codecommit:GetFile",
+                                            "codecommit:GetUploadArchiveStatus",
+                                            "codecommit:MergePullRequestBySquash",
+                                            "codecommit:GetDifferences",
+                                            "codecommit:GetRepository",
+                                            "codecommit:GetMergeConflicts",
+                                            "codecommit:GetMergeCommit",
+                                            "codecommit:PostCommentForComparedCommit",
+                                            "codecommit:GitPush",
+                                            "codecommit:GetMergeOptions",
+                                            "codecommit:GetTree",
+                                            "codecommit:GetBlob",
+                                            "codecommit:GetReferences",
+                                            "codecommit:DescribeMergeConflicts",
+                                            "codecommit:UpdatePullRequestTitle",
+                                            "codecommit:GetCommit",
+                                            "codecommit:GetCommitHistory",
+                                            "codecommit:GetCommitsFromMergeBase",
+                                            "codecommit:BatchGetCommits",
+                                            "codecommit:DescribePullRequestEvents",
+                                            "codecommit:UpdatePullRequestStatus",
+                                            "codecommit:GetPullRequest",
+                                            "codecommit:ListBranches",
+                                            "codecommit:MergeBranchesBySquash",
+                                            "codecommit:BatchGetRepositories",
+                                            "codecommit:GitPull",
+                                            "codecommit:GetCommentsForPullRequest",
+                                            "codecommit:CancelUploadArchive",
+                                            "codecommit:GetFolder",
+                                            "codecommit:PostCommentReply",
+                                            "codecommit:MergeBranchesByFastForward",
+                                            "codecommit:CreateUnreferencedMergeCommit",
+                                            "codecommit:MergeBranchesByThreeWay",
+                                            "codecommit:GetBranch",
+                                            "codecommit:MergePullRequestByFastForward",
+                                            "codecommit:DeleteBranch"
+                                        ],
+                                        "Resource": "arn:aws:codecommit:*:*:*"
+                                    },
+                                    {
+                                        "Effect": "Allow",
+                                        "Action": "codecommit:ListRepositories",
+                                        "Resource": "*"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
 				}
 			]
 		}
