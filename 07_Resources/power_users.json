@@ -3,7 +3,7 @@
         "Type": "AWS::IAM::Group",
         "Description": "All the privilege of an Admin, minus the ability to to manage users. Meaning no access to IAM, etc.",
         "Properties": {
-            "GroupName": "Power Users",
+            "GroupName": "Power-Users",
             "Policies": [
                 {
                     "PolicyName": "default",
