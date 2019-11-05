@@ -22,12 +22,12 @@ To deploy this stack, all you need to do is click the button to the left and fol
 The stack takes advantage of just IAM Groups.
 
 - 5x IAM Groups
+    - **Owners**: Owners are like Admins, but just own the company/product.
+    - **Root**: Full access to the whole AWS account.
+    - **Admins**: All the privilege of a Root, minus the ability to to manage users. Meaning no access to IAM, etc.
     - **Accountants**: Accountants will have access only to the billing section of AWS.
-    - **Admins**: Full access to the whole AWS account.
     - **Auditors**: Read only access to specific parts of the site.
     - **Developers**: Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.
-    - **Owners**: Owners are like Admins, but just own the company.
-    - **Power-Users**: All the privilege of an Admin, minus the ability to to manage users. Meaning no access to IAM, etc.
     - **Support**: Mostly read only access to the AWS account to help them debug issues.
 
 # Pricing

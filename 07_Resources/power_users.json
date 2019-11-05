@@ -1,9 +1,9 @@
 {
     "IAMGroupPowerUsers": {
         "Type": "AWS::IAM::Group",
-        "Description": "All the privilege of an Admin, minus the ability to to manage users. Meaning no access to IAM, etc.",
+        "Description": "All the privilege of a Root group, minus the ability to to manage users. Meaning no access to IAM, etc.",
         "Properties": {
-            "GroupName": "Power-Users",
+            "GroupName": "Admins",
             "Policies": [
                 {
                     "PolicyName": "default",

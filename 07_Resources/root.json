@@ -3,7 +3,7 @@
 		"Type": "AWS::IAM::Group",
         "Description": "Full access to the whole AWS account.",
 		"Properties": {
-			"GroupName": "Admins",
+			"GroupName": "Root",
 			"Policies": [
 				{
 					"PolicyName": "default",
