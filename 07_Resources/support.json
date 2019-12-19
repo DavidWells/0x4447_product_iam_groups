@@ -4,6 +4,7 @@
         "Description": "Mostly read only access to the AWS account to help them debug issues.",
         "Properties": {
             "GroupName": "Support",
+            "Path": "/Department/Support/",
             "ManagedPolicyArns": [
                 "arn:aws:iam::aws:policy/job-function/SupportUser"
             ]

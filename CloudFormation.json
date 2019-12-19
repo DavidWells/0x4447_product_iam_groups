@@ -7,9 +7,10 @@
 			"Description": "Accountants will have access only to the billing section of AWS.",
 			"Properties": {
 				"GroupName": "Accountants",
+				"Path": "/Department/Accountants/",
 				"Policies": [
 					{
-						"PolicyName": "default",
+						"PolicyName": "portal",
 						"PolicyDocument": {
 							"Version": "2012-10-17",
 							"Statement": [
@@ -24,51 +25,24 @@
 				]
 			}
 		},
-		"IAMGroupAdmins": {
-			"Type": "AWS::IAM::Group",
-			"Description": "Full access to the whole AWS account.",
-			"Properties": {
-				"GroupName": "Admins",
-				"Policies": [
-					{
-						"PolicyName": "default",
-						"PolicyDocument": {
-							"Version": "2012-10-17",
-							"Statement": [
-								{
-									"Effect": "Allow",
-									"Action": "*",
-									"Resource": "*"
-								}
-							]
-						}
-					}
-				]
-			}
-		},
 		"IAMGroupPowerUsers": {
 			"Type": "AWS::IAM::Group",
-			"Description": "All the privilege of an Admin, minus the ability to to manage users. Meaning no access to IAM, etc.",
+			"Description": "All the privilege of a Root group, minus the ability to to manage users. Meaning no access to IAM, etc.",
 			"Properties": {
-				"GroupName": "Power-Users",
+				"GroupName": "Admins",
+				"Path": "/Department/Admins/",
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/AdministratorAccess"
+				],
 				"Policies": [
 					{
-						"PolicyName": "default",
+						"PolicyName": "no_iam_access",
 						"PolicyDocument": {
 							"Version": "2012-10-17",
 							"Statement": [
 								{
-									"Effect": "Allow",
-									"NotAction": [
-										"iam:*",
-										"organizations:*",
-										"account:*"
-									],
-									"Resource": "*"
-								},
-								{
-									"Effect": "Allow",
-									"Action": "*",
+									"Effect": "Deny",
+									"Action": "iam:*",
 									"Resource": "*"
 								}
 							]
@@ -82,16 +56,45 @@
 			"Description": "Owners are like Admins, but just own the company.",
 			"Properties": {
 				"GroupName": "Owners",
+				"Path": "/Department/Owners/",
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/AdministratorAccess"
+				]
+			}
+		},
+		"IAMGroupAdmins": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Full access to the whole AWS account.",
+			"Properties": {
+				"GroupName": "Root",
+				"Path": "/Department/Root/",
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/AdministratorAccess"
+				]
+			}
+		},
+		"IAMGroupAuditors": {
+			"Type": "AWS::IAM::Group",
+			"Description": "Read only access to specific parts of the site.",
+			"Properties": {
+				"GroupName": "Auditors",
+				"Path": "/Department/Auditors/",
+				"ManagedPolicyArns": [
+					"arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
+				],
 				"Policies": [
 					{
-						"PolicyName": "default",
+						"PolicyName": "policy_simulator",
 						"PolicyDocument": {
 							"Version": "2012-10-17",
 							"Statement": [
 								{
 									"Effect": "Allow",
-									"Action": "*",
-									"Resource": "*"
+									"Action": [
+										"iam:GetContextKeysForPrincipalPolicy",
+										"iam:SimulatePrincipalPolicy"
+									],
+									"Resource": "arn:aws:iam::*:user/Department/Auditors/*"
 								}
 							]
 						}
@@ -104,18 +107,9 @@
 			"Description": "Mostly read only access to the AWS account to help them debug issues.",
 			"Properties": {
 				"GroupName": "Support",
+				"Path": "/Department/Support/",
 				"ManagedPolicyArns": [
 					"arn:aws:iam::aws:policy/job-function/SupportUser"
-				]
-			}
-		},
-		"IAMGroupAuditors": {
-			"Type": "AWS::IAM::Group",
-			"Description": "Read only access to specific parts of the site.",
-			"Properties": {
-				"GroupName": "Auditors",
-				"ManagedPolicyArns": [
-					"arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
 				]
 			}
 		},
@@ -124,9 +118,10 @@
 			"Description": "Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.",
 			"Properties": {
 				"GroupName": "Developers",
+				"Path": "/Department/Developers/",
 				"Policies": [
 					{
-						"PolicyName": "default",
+						"PolicyName": "logs",
 						"PolicyDocument": {
 							"Version": "2012-10-17",
 							"Statement": [
@@ -165,7 +160,15 @@
 										"logs:ListLogDeliveries"
 									],
 									"Resource": "*"
-								},
+								}
+							]
+						}
+					},
+					{
+						"PolicyName": "cloudwatch",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
 								{
 									"Effect": "Allow",
 									"Action": [
@@ -191,7 +194,15 @@
 										"cloudwatch:DescribeAnomalyDetectors"
 									],
 									"Resource": "*"
-								},
+								}
+							]
+						}
+					},
+					{
+						"PolicyName": "codebuild",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
 								{
 									"Effect": "Allow",
 									"Action": [
@@ -212,7 +223,15 @@
 										"codebuild:ListConnectedOAuthAccounts"
 									],
 									"Resource": "*"
-								},
+								}
+							]
+						}
+					},
+					{
+						"PolicyName": "codepipeline",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
 								{
 									"Effect": "Allow",
 									"Action": "codepipeline:RetryStageExecution",
@@ -251,7 +270,15 @@
 										"codepipeline:GetJobDetails"
 									],
 									"Resource": "*"
-								},
+								}
+							]
+						}
+					},
+					{
+						"PolicyName": "codecommit",
+						"PolicyDocument": {
+							"Version": "2012-10-17",
+							"Statement": [
 								{
 									"Effect": "Allow",
 									"Action": [

@@ -4,8 +4,27 @@
         "Description": "Read only access to specific parts of the site.",
 		"Properties": {
 			"GroupName": "Auditors",
+            "Path": "/Department/Auditors/",
 			"ManagedPolicyArns": [
                 "arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
+            ],
+            "Policies": [
+                {
+                    "PolicyName": "policy_simulator",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "iam:GetContextKeysForPrincipalPolicy",
+                                    "iam:SimulatePrincipalPolicy"
+                                ],
+                                "Resource": "arn:aws:iam::*:user/Department/Auditors/*"
+                            }
+                        ]
+                    }
+                }
             ]
 		}
 	}

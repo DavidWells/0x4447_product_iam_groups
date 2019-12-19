@@ -4,21 +4,10 @@
         "Description": "Full access to the whole AWS account.",
 		"Properties": {
 			"GroupName": "Root",
-			"Policies": [
-				{
-					"PolicyName": "default",
-					"PolicyDocument": {
-						"Version": "2012-10-17",
-						"Statement": [
-							{
-								"Effect": "Allow",
-								"Action": "*",
-								"Resource": "*"
-							}
-						]
-					}
-				}
-			]
+            "Path": "/Department/Root/",
+			"ManagedPolicyArns": [
+                "arn:aws:iam::aws:policy/AdministratorAccess"
+            ]
 		}
 	}
 }

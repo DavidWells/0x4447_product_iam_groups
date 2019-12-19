@@ -4,10 +4,11 @@
         "Description": "Can only see CodeBuild logs, can check CodePipeline status and trigger builds if needed, and have access to CodeCommit.",
 		"Properties": {
 			"GroupName": "Developers",
+            "Path": "/Department/Developers/",
 			"Policies": [
-				{
-					"PolicyName": "default",
-					"PolicyDocument": {
+                {
+                    "PolicyName": "logs",
+                    "PolicyDocument": {
                         "Version": "2012-10-17",
                         "Statement": [
                             {
@@ -45,7 +46,15 @@
                                     "logs:ListLogDeliveries"
                                 ],
                                 "Resource": "*"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PolicyName": "cloudwatch",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
                             {
                                 "Effect": "Allow",
                                 "Action": [
@@ -71,7 +80,15 @@
                                     "cloudwatch:DescribeAnomalyDetectors"
                                 ],
                                 "Resource": "*"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PolicyName": "codebuild",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
                             {
                                 "Effect": "Allow",
                                 "Action": [
@@ -92,7 +109,15 @@
                                     "codebuild:ListConnectedOAuthAccounts"
                                 ],
                                 "Resource": "*"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PolicyName": "codepipeline",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
                             {
                                 "Effect": "Allow",
                                 "Action": "codepipeline:RetryStageExecution",
@@ -131,7 +156,15 @@
                                     "codepipeline:GetJobDetails"
                                 ],
                                 "Resource": "*"
-                            },
+                            }
+                        ]
+                    }
+                },
+                {
+                    "PolicyName": "codecommit",
+                    "PolicyDocument": {
+                        "Version": "2012-10-17",
+                        "Statement": [
                             {
                                 "Effect": "Allow",
                                 "Action": [
@@ -197,7 +230,7 @@
                             }
                         ]
                     }
-				}
+                }
 			]
 		}
 	}

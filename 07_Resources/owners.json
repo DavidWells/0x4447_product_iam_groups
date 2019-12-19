@@ -4,21 +4,10 @@
         "Description": "Owners are like Admins, but just own the company.",
 		"Properties": {
 			"GroupName": "Owners",
-			"Policies": [
-				{
-					"PolicyName": "default",
-					"PolicyDocument": {
-						"Version": "2012-10-17",
-						"Statement": [
-							{
-								"Effect": "Allow",
-								"Action": "*",
-								"Resource": "*"
-							}
-						]
-					}
-				}
-			]
+            "Path": "/Department/Owners/",
+			"ManagedPolicyArns": [
+                "arn:aws:iam::aws:policy/AdministratorAccess"
+            ]
 		}
 	}
 }

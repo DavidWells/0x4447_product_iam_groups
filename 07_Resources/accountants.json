@@ -4,9 +4,10 @@
         "Description": "Accountants will have access only to the billing section of AWS.",
 		"Properties": {
 			"GroupName": "Accountants",
+            "Path": "/Department/Accountants/",
 			"Policies": [
 				{
-					"PolicyName": "default",
+					"PolicyName": "portal",
 					"PolicyDocument": {
                         "Version": "2012-10-17",
                         "Statement": [
