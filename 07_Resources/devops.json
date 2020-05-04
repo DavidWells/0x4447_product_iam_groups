@@ -3,8 +3,8 @@
         "Type": "AWS::IAM::Group",
         "Description": "All the privilege of a Root group, minus the ability to to manage users. Meaning no access to IAM, etc.",
         "Properties": {
-            "GroupName": "Admins",
-            "Path": "/Department/Admins/",
+            "GroupName": "DevOps",
+            "Path": "/Department/DevOps/",
             "ManagedPolicyArns": [
                 "arn:aws:iam::aws:policy/AdministratorAccess"
             ],
