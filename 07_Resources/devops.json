@@ -1,7 +1,7 @@
 {
     "IAMGroupPowerUsers": {
         "Type": "AWS::IAM::Group",
-        "Description": "All the privilege of a Root group, minus the ability to to manage users. Meaning no access to IAM, etc.",
+        "Description": "All the privilege of a Root group, minus the ability to access IAM and Billing.",
         "Properties": {
             "GroupName": "DevOps",
             "Path": "/Department/DevOps/",
@@ -17,6 +17,11 @@
                             {
                                 "Effect": "Deny",
                                 "Action": "iam:*",
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Deny",
+                                "Action": "aws-portal:*",
                                 "Resource": "*"
                             }
                         ]
